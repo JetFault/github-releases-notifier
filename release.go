@@ -12,4 +12,5 @@ type Release struct {
 	Description string
 	URL         url.URL
 	PublishedAt time.Time
+  IsPrerelease bool
 }

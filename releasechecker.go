@@ -87,6 +87,7 @@ func (c *Checker) query(owner, name string) (Repository, error) {
 						Description githubql.String
 						URL         githubql.URI
 						PublishedAt githubql.DateTime
+            IsPrerelease githubql.Boolean
 					}
 				}
 			} `graphql:"releases(last: 1)"`
@@ -132,6 +133,7 @@ func (c *Checker) query(owner, name string) (Repository, error) {
 			Description: string(latestRelease.Description),
 			URL:         *latestRelease.URL.URL,
 			PublishedAt: latestRelease.PublishedAt.Time,
+      IsPrerelease: bool(latestRelease.IsPrerelease),
 		},
 	}, nil
 }
